@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlineCinema</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+        integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="container">
+
+            <nav class="nav-wrapper">
+
+                <div class="logo">
+                    <a href="#"><span>Online</span> Cinema</a>
+                </div>
+
+                <div class="menu">
+
+                    <button type="button" class="menu__btn up" data-toggle="modal" data-target="#signUp">Sign
+                        Up</button>
+                    <button type="button" class="menu__btn in" data-toggle="modal" data-target="#signIn">Sing
+                        In</button>
+
+                    <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">E-mail</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">Password</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="menu__btn ftr">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">E-mail</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">Password</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="menu__btn ftr">Sign In</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </nav>
+
+            <div class="header-content">
+                <div class="header-desc">
+
+                    <div class="row justify-content-center ">
+                        <div class="col d-flex justify-content-center">
+                            <div class="card" style="width:fit-content">
+                                <h5 class="card-title">Tenet</h5>
+                                <img src="image/tenet.jpg" class="card-img-top" alt="Photo">
+                                <div class="card-body">
+
+                                    <p class="card-text">Armed with only one word, Tenet, and fighting for the
+                                        survival of the entire
+                                        world, a Protagonist journeys through a twilight world of international
+                                        espionage on a mission that will unfold in something beyond real time.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Action, Sci-Fi</li>
+                                </ul>
+                                <div class="card-body btn">
+                                    <a href="#" class="card-link">Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center">
+                            <div class="card" style="width:fit-content">
+                                <h5 class="card-title">The Irishman</h5>
+                                <img src="image/theIrishman.jpg" class="card-img-top" alt="Photo">
+                                <div class="card-body">
+
+                                    <p class="card-text">An old man recalls his time painting houses for his friend,
+                                        Jimmy Hoffa, through the 1950-70s.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Biography, Crime, Drama</li>
+                                </ul>
+                                <div class="card-body btn">
+                                    <a href="#" class="card-link">Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center">
+                            <div class="card" style="width:fit-content">
+                                <h5 class="card-title">The Wolf of Wall Street</h5>
+                                <img src="image/theWolf.jpg" class="card-img-top" alt="Photo">
+                                <div class="card-body">
+
+                                    <p class="card-text">Based on the true story of Jordan Belfort, from his rise to a
+                                        wealthy stock-broker living the high life to his fall involving crime,
+                                        corruption and the federal government.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Biography, Crime, Drama </li>
+                                </ul>
+                                <div class="card-body btn">
+                                    <a href="#" class="card-link">Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center">
+                            <div class="card" style="width:fit-content">
+                                <h5 class="card-title">Men in Black</h5>
+                                <img src="image/menIn.jpg" class="card-img-top" alt="Photo">
+                                <div class="card-body">
+
+                                    <p class="card-text">A police officer joins a secret organization that polices and
+                                        monitors extraterrestrial interactions on Earth.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Action, Adventure, Comedy </li>
+                                </ul>
+                                <div class="card-body btn">
+                                    <a href="#" class="card-link">Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center">
+                            <div class="card" style="width:fit-content">
+                                <h5 class="card-title">Avengers: Endgame</h5>
+                                <img src="image/avengers.jpg" class="card-img-top" alt="Photo">
+                                <div class="card-body">
+
+                                    <p class="card-text">After the devastating events of Avengers: Infinity War (2018),
+                                        the universe is in ruins. With the help of remaining allies, the Avengers
+                                        assemble once more in order to reverse Thanos' actions and restore balance to
+                                        the universe.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Action, Adventure, Drama </li>
+                                </ul>
+                                <div class="card-body btn">
+                                    <a href="#" class="card-link">Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </header>
+    <footer class="footer">
+        <p><span>Online</span>Cinema</p>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
