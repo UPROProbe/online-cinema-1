@@ -1,0 +1,45 @@
+.modal-content{
+    border: 0;
+    background-color: #443f3f;
+}
+.modal.fade {
+    color: #ffffff;
+}
+
+.modal-header{
+    background-color: #443f3f;
+    border-color: #f3c017;
+}
+.modal-title{
+    color: #f3c017;
+    font-weight: 900;
+    font-size: 40px; 
+}
+.close{
+    background-color: #443f3f;
+    border: 0;
+}
+.close:active{
+    outline: none;
+}
+.modal-body{
+    background-color: #443f3f;
+}
+.form-control{
+    background-color: #ffffff;
+    border-color: #0e0e0f;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #0e0e0f;
+}
+.modal-footer{
+    display: contents;  
+}
+
+.btn.ftr{
+    background-color: #f3c017;
+    color: #000000;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

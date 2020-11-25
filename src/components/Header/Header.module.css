@@ -1,0 +1,15 @@
+.header{
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0px 15px;
+    padding-bottom: 12px;
+}
+.headerWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #443f3f;
+    border-radius: 4px;
+    padding: 12px 10px; 
+}

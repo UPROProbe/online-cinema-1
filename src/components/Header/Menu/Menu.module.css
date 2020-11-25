@@ -1,0 +1,21 @@
+.menu {
+    display: flex;  
+}
+.menu a{
+    color: #ffffff;
+    text-decoration: none;  
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 7px 0;
+    padding-right: 10px;
+}
+.menu a:hover{
+    opacity: 0.8;
+}
+.menu a.active{
+    color: #f3c017;
+}.menu a.active:hover{
+    opacity: 1;
+    cursor: default;
+}

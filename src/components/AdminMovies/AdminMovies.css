@@ -1,0 +1,11 @@
+/* input{
+    width: 100%;
+    background-color: #ffffff;
+     border-color: #0e0e0f; 
+    border-radius: 4px;
+}
+
+input:focus{
+    box-shadow: none;
+    border-color: #0e0e0f;
+} */
