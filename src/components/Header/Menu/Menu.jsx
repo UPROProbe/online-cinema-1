@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from "./Menu.module.css"
+import SignIn from './Modal/SignIn';
+import SignUp from './Modal/SignUp';
 const Menu = (props) => {
     return (
         <div className={style.menu}>
@@ -8,12 +10,9 @@ const Menu = (props) => {
             <NavLink to='/booking' activeClassName={style.active}>Booking</NavLink>
             <NavLink to='/admin_movies' activeClassName={style.active}>Manage Movies</NavLink>
             <NavLink to='/admin_users' activeClassName={style.active}>Manage Users</NavLink>
-            <button type="button" className="btn up" data-toggle="modal" data-target="#signUp">Sign
-                    Up</button>
-            <button type="button" className="btn in" data-toggle="modal" data-target="#signIn">Sing
-                    In</button>
+            <SignUp />
+            <SignIn />
         </div>
-
     )
 }
 export default Menu;

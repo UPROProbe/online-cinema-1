@@ -5,12 +5,12 @@ const UserSettings = (props) => {
     return (
         <div className={style.settings}>
             <div className="form-group">
-                <label for="recipient-name" className="col-form-label">First Name</label>
+                <label htmlFor="recipient-name" className="col-form-label">First Name</label>
                 <input type="text" className="form-control name" id="recipient-name" />
                 <button type="button" className="btn save">Save</button>
             </div>
             <div className="form-group">
-                <label for="recipient-name" className="col-form-label">Last Name</label>
+                <label htmlFor="recipient-name" className="col-form-label">Last Name</label>
                 <input type="text" className="form-control name" id="recipient-name" />
                 <button type="button" className="btn save">Save</button>
             </div>

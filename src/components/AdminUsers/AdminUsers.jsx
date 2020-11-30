@@ -1,11 +1,12 @@
 import React from 'react';
 import "./AdminUsers.css"
 import User from './User/User';
+import UserContainer from './User/UserContainer';
 
 const AdminUsers = (props) => {
-
-    let userElements = props.users.map(user =>
-        <User firstN={user.firstN} lastN={user.lastN} eMail={user.eMail} remove={user.remove} /> );
+    // debugger
+//     let userElements = props.users.map(user =>
+// <User firstN={user.firstName} lastN={user.lastName} email={user.email} remove={user.remove} /> );
 
     return (
         <table className="table">
@@ -19,7 +20,8 @@ const AdminUsers = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {userElements}
+                <UserContainer />
+                {/* {userElements} */}
             </tbody>
         </table>
     )

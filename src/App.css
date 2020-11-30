@@ -57,6 +57,14 @@
 .btn.unbook:hover{
     opacity: 1;
 }
+.btn.edit{
+    width: 100%;
+    background-color: white;
+    opacity: 0.8;
+}
+.btn.edit:hover{
+    opacity: 1;
+}
 .btn.remove{
     width: 100%;
 }
@@ -95,5 +103,6 @@ tbody{
 .table img{
     width: 60px;
 }
+
 
 

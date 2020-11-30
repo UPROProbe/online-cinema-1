@@ -1,52 +1,40 @@
 import React from 'react';
-import Movie from './Movie/Movie';
 import "./AdminMovies.css"
+import MovieContainer from './Movie/MovieContainer';
+import MovieInput from './MovieInput';
+
 
 const AdminMovies = (props) => {
 
-    let moviesElements = props.movies.map(movie =>
-        <Movie title={movie.title} description={movie.description} price={movie.price} start={movie.start} end={movie.end} image={movie.image} tags={movie.tags} />);
-
-    let newMovie = React.createRef();
-    let addMovie = () => {
-        let text = newMovie.current.value;
-        alert(text);
-    }
-
     return (
-        <div>
-            <table className="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Ticket price</th>
-                        <th scope="col">Start date</th>
-                        <th scope="col">End date</th>
-                        <th scope="col">Picture</th>
-                        <th scope="col">Tags</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {moviesElements}
-                    <tr>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td><input ref={newMovie} className='form-control' /></td>
-                        <td colspan="2"><button type="button" className="btn add" onClick={addMovie}>+add</button></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            {/* <button type="button" className="btn add" onClick={addMovie}>+add</button> */}
-
-        </div>
+        <table className="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Ticket price</th>
+                    <th scope="col">Start date</th>
+                    <th scope="col">End date</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Tags</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <MovieContainer />
+                <tr>
+                    <MovieInput field='title' newMovieText={props.newMovieTextTitle} updateNewMovieText={props.updateNewMovieText} />
+                    <MovieInput field='description' newMovieText={props.newMovieTextDescription} updateNewMovieText={props.updateNewMovieText} />
+                    <MovieInput field='price' newMovieText={props.newMovieTextPrice} updateNewMovieText={props.updateNewMovieText} />
+                    <MovieInput field='start' newMovieText={props.newMovieTextStart} updateNewMovieText={props.updateNewMovieText} />
+                    <MovieInput field='end' newMovieText={props.newMovieTextEnd} updateNewMovieText={props.updateNewMovieText} />
+                    <MovieInput field='image' newMovieText={props.newMovieTextImage} updateNewMovieText={props.updateNewMovieText} />
+                    <MovieInput field='tags' newMovieText={props.newMovieTextTags} updateNewMovieText={props.updateNewMovieText} />
+                    <td colSpan="2"><button type="button" className="btn add" onClick={() => { props.addMovie() }}>+add</button></td>
+                </tr>
+            </tbody>
+        </table>
     )
 }
 export default AdminMovies;

@@ -2,29 +2,27 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Movies from './components/Movies/Movies';
-import UserBooking from './components/UserBooking/UserBooking';
 import UserSettings from './components/UserSettings/UserSettings';
-import AdminMovies from './components/AdminMovies/AdminMovies';
-import AdminUsers from './components/AdminUsers/AdminUsers';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import AdminMoviesContainer from './components/AdminMovies/AdminMoviesContainer';
+import MoviesContainer from './components/Movies/MoviesContainer';
+import UserBookingContainer from './components/UserBooking/UserBookingContainer';
+import AdminUsersContainer from './components/AdminUsers/AdminUsersContainer';
 
 const App = (props) => {
 
   return (
-    <BrowserRouter>
       <div className="app">
         <Header />
         <div className='content'>
-          <Route path='/movies' render={() => <Movies movies={props.state.movies} />} />
-          <Route path='/booking' render={() => <UserBooking movies={props.state.movies} />} />
+          <Route exact path='/' render={() => <MoviesContainer  />} />
+          <Route path='/booking' render={() => <UserBookingContainer  />} />
           <Route path='/settings' render={() => <UserSettings />} />
-          <Route path='/admin_movies' render={() => <AdminMovies movies={props.state.movies} />} />
-          <Route path='/admin_users' render={() => <AdminUsers users={props.state.users}/>} />
+          <Route path='/admin_movies' render={() => <AdminMoviesContainer />} />
+          <Route path='/admin_users' render={() => <AdminUsersContainer  />} />
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
   );
 }
 

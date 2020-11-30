@@ -5,9 +5,6 @@ import "./UserBooking.css"
 
 const UserBooking = (props) => {
 
-  let moviesElements = props.movies.map(movie =>
-    <Movie title={movie.title} description={movie.description} price={movie.price} start={movie.start} end={movie.end} image={movie.image} tags={movie.tags} />);
-
   return (
     <table className="table">
       <thead>
@@ -24,8 +21,18 @@ const UserBooking = (props) => {
         </tr>
       </thead>
       <tbody>
-        {moviesElements}
-
+        {
+          props.movies.map(movie =>
+            <Movie
+              title={movie.title}
+              description={movie.description}
+              price={movie.price}
+              start={movie.start}
+              end={movie.end}
+              image={movie.image}
+              tags={movie.tags}
+            />)
+        }
       </tbody>
     </table>
   )

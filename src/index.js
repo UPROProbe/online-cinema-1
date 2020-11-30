@@ -2,20 +2,37 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import state from './redux/state'
+import store from './redux/reduxStore'
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
+import firebase from 'firebase'
+
+// firebase.initializeApp(config);
+const firebaseConfig = {
+  apiKey: "AIzaSyC-zd7E8g1oa1rME6ELY7C7Em5_ju3EyKs",
+  authDomain: "online-cinema-b5683.firebaseapp.com",
+  databaseURL: "https://online-cinema-b5683.firebaseio.com",
+  projectId: "online-cinema-b5683",
+  storageBucket: "online-cinema-b5683.appspot.com",
+  messagingSenderId: "365768693004",
+  appId: "1:365768693004:web:bfb2b64b80bd31b0c82529",
+  measurementId: "G-LFHW1MDMDM"
+};
+
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App state={state}/>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
 
 

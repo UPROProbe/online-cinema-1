@@ -7,7 +7,7 @@ const Logo = (props) => {
         <div className={style.logo}>
             {/* <a href="#"><img src="/image/icon.png" alt="Photo"><span>Online</span>Cinema</a> */}
             {/* <a href="index.html"><span>Online</span> Cinema</a> */}
-            <NavLink to='/movies'><span>Online</span> Cinema</NavLink>
+            <NavLink to='/'><span>Online</span> Cinema</NavLink>
         </div>
     )
 }
