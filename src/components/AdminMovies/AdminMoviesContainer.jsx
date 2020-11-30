@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMovieActionCreator, updateNewMovieTextActionCreator } from '../../redux/movieReducer';
+import { addMovieActionCreator, setMoviesAC, updateNewMovieTextActionCreator } from '../../redux/movieReducer';
 import AdminMovies from './AdminMovies';
 
 let mapStateToProps = (state) => {
@@ -23,6 +23,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         updateNewMovieText: (text, from) => {
             dispatch(updateNewMovieTextActionCreator(text, from));
+        },
+        setMovies:(movieId)=>{
+            dispatch(setMoviesAC(movieId))
         },
     }
 }

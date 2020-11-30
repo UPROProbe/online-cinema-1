@@ -1,15 +1,13 @@
+import firebaseDb from "../firebase"
 const ADD_MOVIE = 'ADD-MOVIE'
 const UPDATE_NEW_MOVIE_TEXT = 'UPDATE-NEW-MOVIE-TEXT'
 const DELETE_MOVIE = 'DELETE_MOVIE'
+const BOOK_MOVIE = 'BOOK_MOVIE'
+const UNBOOK_MOVIE = 'UNBOOK_MOVIE'
+const SET_MOVIES = 'SET_MOVIES'
 
 let initialState = {
-    movies: [
-        { id: 1, title: 'Tenet', description: 'Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.', price: '5$', start: 'some start date', end: 'some end date', image: 'https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg', tags: 'Action, Sci-Fi' },
-        { id: 2, title: 'The Irishman', description: 'An old man recalls his time painting houses for his friend, Jimmy Hoffa, through the 1950-70s.', price: '4$', start: 'some start date', end: 'some end date', image: 'https://images-na.ssl-images-amazon.com/images/I/71Y5pMAw8rL._AC_SL1200_.jpg', tags: 'Biography, Crime, Drama' },
-        { id: 3, title: 'some title', description: 'some description', price: 'some price', start: 'some start date', end: 'some end date', image: 'some picture', tags: 'some tags' },
-        { id: 4, title: '', description: '', price: '', start: '', end: '', image: '', tags: '' },
-        { id: 5, title: '', description: '', price: '', start: '', end: '', image: '', tags: '' },
-    ],
+    movies: [],
     newMovieTextTitle: '',
     newMovieTextDescription: '',
     newMovieTextPrice: '',
@@ -30,6 +28,13 @@ const movieReducer = (state = initialState, action) => {
                 image: state.newMovieTextImage,
                 tags: state.newMovieTextTags,
             }
+            firebaseDb.child('movies').push(
+                newMovie,
+                err=>{
+                    if(err)
+                    console.log(err)
+                }
+            )
             return {
                 ...state,
                 movies: [...state.movies, newMovie],
@@ -99,6 +104,32 @@ const movieReducer = (state = initialState, action) => {
                 movies: [...state.movies],
             };
         }
+        case BOOK_MOVIE:
+            return {
+                ...state,
+                movies: state.movies.map(movie => {
+                    if (movie.id === action.movieId) {
+                        return { ...movie, booked: true }
+                    }
+                    return movie
+                })
+            }
+        case UNBOOK_MOVIE:
+            return {
+                ...state,
+                movies: state.movies.map(movie => {
+                    if (movie.id === action.movieId) {
+                        return { ...movie, booked: false }
+                    }
+                    return movie
+                })
+            }
+        case SET_MOVIES:
+            return{
+                ...state,
+                movies: [...state.movies, ...action.movies]
+            }
+
         // case DELETE_MOVIE:
         //     return {
         //         ...state,
@@ -115,5 +146,8 @@ const movieReducer = (state = initialState, action) => {
 }
 export default movieReducer;
 export const addMovieActionCreator = () => ({ type: ADD_MOVIE })
-export const updateNewMovieTextActionCreator = (text, from) => ({ type: UPDATE_NEW_MOVIE_TEXT, newText: text, from: from })
-export const deleteMovieActionCreator = id => ({ type: DELETE_MOVIE, movieId: id })
+export const updateNewMovieTextActionCreator = (text, from) => ({ type: UPDATE_NEW_MOVIE_TEXT, newText: text, from })
+export const deleteMovieActionCreator = movieId => ({ type: DELETE_MOVIE, movieId })
+export const bookMovieAC = movieId => ({ type: BOOK_MOVIE, movieId })
+export const unbookMovieAC = movieId => ({ type: UNBOOK_MOVIE, movieId })
+export const setMoviesAC = movies => ({ type: SET_MOVIES, movies })

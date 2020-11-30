@@ -1,18 +1,23 @@
 import React from 'react';
 
 const Movie = (props) => {
+  
   return (
-    <tr>
-      <td>{props.title}</td>
-      <td>{props.description}</td>
-      <td>{props.price}</td>
-      <td>{props.start}</td>
-      <td>{props.end}</td>
-      <td><img src={props.image} alt="Photo" /></td>
-      <td>{props.tags}</td>
-      <td><button type="button" className="btn book">Book</button></td>
-      <td><button type="button" className="btn unbook">Cancel Booking</button></td>
-    </tr>
+    props.movies.map(movie =>
+      <tr key={movie.id}>
+        <td>{movie.title}</td>
+        <td>{movie.description}</td>
+        <td>{movie.price}</td>
+        <td>{movie.start}</td>
+        <td>{movie.end}</td>
+        <td><img src={movie.image} alt="Photo" /></td>
+        <td>{movie.tags}</td>
+        {
+          movie.booked ? <td><button type="button" className="btn unbook" onClick={() => { props.unbookMovie(movie.id) }}>Cancel Booking</button></td> : <td><button type="button" className="btn book" onClick={() => { props.bookMovie(movie.id) }}>Book</button></td>
+        }
+      </tr>
+    )
+
   )
 }
 export default Movie;
