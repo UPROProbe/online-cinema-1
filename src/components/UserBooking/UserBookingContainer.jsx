@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMoviesAC } from '../../redux/movieReducer';
+import { setMovies } from '../../redux/movieReducer';
 import UserBooking from './UserBooking';
 
 let mapStateToProps = (state) => {
@@ -8,14 +8,7 @@ let mapStateToProps = (state) => {
         movies: state.movies.movies,
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setMovies: (movies) => {
-            dispatch(setMoviesAC(movies))
-        },
-    }
-}
 
-const UserBookingContainer = connect(mapStateToProps, mapDispatchToProps)(UserBooking);
+const UserBookingContainer = connect(mapStateToProps, {setMovies})(UserBooking);
 
 export default UserBookingContainer;

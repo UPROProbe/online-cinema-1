@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bookMovieAC, unbookMovieAC } from '../../../redux/movieReducer';
+import { bookMovie, unbookMovie } from '../../../redux/movieReducer';
 import Movie from './Movie';
 
 let mapStateToProps = (state) => {
@@ -8,17 +8,7 @@ let mapStateToProps = (state) => {
         movies: state.movies.movies,
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        bookMovie: (movieId)=>{
-            dispatch(bookMovieAC(movieId))
-        },
-        unbookMovie: (movieId)=>{
-            dispatch(unbookMovieAC(movieId))
-        },
-    }
-}
 
-const MovieContainer = connect(mapStateToProps, mapDispatchToProps)(Movie);
+const MovieContainer = connect(mapStateToProps, {bookMovie, unbookMovie})(Movie);
 
 export default MovieContainer;

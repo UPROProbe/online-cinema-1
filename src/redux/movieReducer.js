@@ -8,84 +8,63 @@ const SET_MOVIES = 'SET_MOVIES'
 
 let initialState = {
     movies: [],
-    newMovieTextTitle: '',
-    newMovieTextDescription: '',
-    newMovieTextPrice: '',
-    newMovieTextStart: '',
-    newMovieTextEnd: '',
-    newMovieTextImage: '',
-    newMovieTextTags: '',
+    newMovieText: {
+        title: '',
+        description: '',
+        price: '',
+        start: '',
+        end: '',
+        image: '',
+        tags: '',
+    }
 };
 const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MOVIE:
             let newMovie = {
-                title: state.newMovieTextTitle,
-                description: state.newMovieTextDescription,
-                price: state.newMovieTextPrice,
-                start: state.newMovieTextStart,
-                end: state.newMovieTextEnd,
-                image: state.newMovieTextImage,
-                tags: state.newMovieTextTags,
+                title: state.newMovieText.title,
+                description: state.newMovieText.description,
+                price: state.newMovieText.price,
+                start: state.newMovieText.start,
+                end: state.newMovieText.end,
+                image: state.newMovieText.image,
+                tags: state.newMovieText.tags,
             }
-            firebaseDb.child('movies').push(
-                newMovie,
-                err=>{
-                    if(err)
-                    console.log(err)
-                }
-            )
+            // firebaseDb.child('movies').push(
+            //     newMovie,
+            //     err=>{
+            //         if(err)
+            //         console.log(err)
+            //     }
+            // )
+            let newMovieTextCopy={}
+            for (let key in state.newMovieText) {
+                newMovieTextCopy[key] = state.newMovieText[key];
+            }
+            for (let key in newMovieTextCopy) {
+                newMovieTextCopy[key] = '';
+            }
             return {
                 ...state,
                 movies: [...state.movies, newMovie],
-                newMovieTextTitle: '',
-                newMovieTextDescription: '',
-                newMovieTextPrice: '',
-                newMovieTextStart: '',
-                newMovieTextEnd: '',
-                newMovieTextImage: '',
-                newMovieTextTags: '',
+                newMovieText: newMovieTextCopy,
             };
-        case UPDATE_NEW_MOVIE_TEXT:
-            switch (action.from) {
-                case 'title':
-                    return {
-                        ...state,
-                        newMovieTextTitle: action.newText,
-                    };
-                case 'description':
-                    return {
-                        ...state,
-                        newMovieTextDescription: action.newText,
-                    };
-                case 'price':
-                    return {
-                        ...state,
-                        newMovieTextPrice: action.newText,
-                    };
-                case 'start':
-                    return {
-                        ...state,
-                        newMovieTextStart: action.newText,
-                    };
-                case 'end':
-                    return {
-                        ...state,
-                        newMovieTextEnd: action.newText,
-                    };
-                case 'image':
-                    return {
-                        ...state,
-                        newMovieTextImage: action.newText,
-                    };
-                case 'tags':
-                    return {
-                        ...state,
-                        newMovieTextTags: action.newText,
-                    };
-                default:
-                    return state;
+        case UPDATE_NEW_MOVIE_TEXT:{
+            let newMovieTextCopy={}
+            for (let key in state.newMovieText) {
+                newMovieTextCopy[key] = state.newMovieText[key];
             }
+            for (let key in newMovieTextCopy) {
+                if(key === action.from){
+                    newMovieTextCopy[key] = action.newText;
+                    return{
+                        ...state,
+                        newMovieText: newMovieTextCopy,
+                    }
+                }
+            }
+            break;
+        }
         case DELETE_MOVIE: {
             let removeByAttr = function (arr, attr, value) {
                 let i = arr.length;
@@ -125,9 +104,10 @@ const movieReducer = (state = initialState, action) => {
                 })
             }
         case SET_MOVIES:
-            return{
+            return {
                 ...state,
-                movies: [...state.movies, ...action.movies]
+                movies: [...action.movies]
+                // movies: [...state.movies, ...action.movies]
             }
 
         // case DELETE_MOVIE:
@@ -145,9 +125,9 @@ const movieReducer = (state = initialState, action) => {
     }
 }
 export default movieReducer;
-export const addMovieActionCreator = () => ({ type: ADD_MOVIE })
-export const updateNewMovieTextActionCreator = (text, from) => ({ type: UPDATE_NEW_MOVIE_TEXT, newText: text, from })
-export const deleteMovieActionCreator = movieId => ({ type: DELETE_MOVIE, movieId })
-export const bookMovieAC = movieId => ({ type: BOOK_MOVIE, movieId })
-export const unbookMovieAC = movieId => ({ type: UNBOOK_MOVIE, movieId })
-export const setMoviesAC = movies => ({ type: SET_MOVIES, movies })
+export const addMovie = () => ({ type: ADD_MOVIE })
+export const updateNewMovieText = (text, from) => ({ type: UPDATE_NEW_MOVIE_TEXT, newText: text, from })
+export const deleteMovie = movieId => ({ type: DELETE_MOVIE, movieId })
+export const bookMovie = movieId => ({ type: BOOK_MOVIE, movieId })
+export const unbookMovie = movieId => ({ type: UNBOOK_MOVIE, movieId })
+export const setMovies = movies => ({ type: SET_MOVIES, movies })

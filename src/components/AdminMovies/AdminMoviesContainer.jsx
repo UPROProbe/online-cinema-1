@@ -1,7 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMovieActionCreator, setMoviesAC, updateNewMovieTextActionCreator } from '../../redux/movieReducer';
+import { addMovie, setMovies, updateNewMovieText } from '../../redux/movieReducer';
 import AdminMovies from './AdminMovies';
+import firebaseDb from "../../firebase"
+
+class AdminMoviesContainer extends React.Component {
+    componentDidMount() {
+        firebaseDb.child('movies').on('value', snapshot => {
+            if (snapshot.val() != null)
+                this.props.setMovies(Object.values(snapshot.val()))
+        })
+    }
+
+    render() {
+        return <AdminMovies newMovieText={this.props.newMovieText} updateNewMovieText={this.props.updateNewMovieText} addMovie={this.props.addMovie}/>
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -14,21 +28,9 @@ let mapStateToProps = (state) => {
         newMovieTextEnd: state.movies.newMovieTextEnd,
         newMovieTextImage: state.movies.newMovieTextImage,
         newMovieTextTags: state.movies.newMovieTextTags,
-    }
-}
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addMovie: () => {
-            dispatch(addMovieActionCreator());
-        },
-        updateNewMovieText: (text, from) => {
-            dispatch(updateNewMovieTextActionCreator(text, from));
-        },
-        setMovies:(movieId)=>{
-            dispatch(setMoviesAC(movieId))
-        },
-    }
-}
-const AdminMoviesContainer = connect(mapStateToProps, mapDispatchToProps)(AdminMovies);
 
-export default AdminMoviesContainer;
+        newMovieText:state.movies.newMovieText
+    }
+}
+
+export default connect(mapStateToProps, {addMovie, updateNewMovieText, setMovies})(AdminMoviesContainer);
