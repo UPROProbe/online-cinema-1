@@ -1,3 +1,4 @@
+// info_vstu
 import firebaseDb from "../firebase"
 const ADD_MOVIE = 'ADD-MOVIE'
 const UPDATE_NEW_MOVIE_TEXT = 'UPDATE-NEW-MOVIE-TEXT'
