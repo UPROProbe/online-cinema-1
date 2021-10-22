@@ -1,6 +1,7 @@
 {
   "name": "new-app",
   "version": "0.1.0",
+  "author" : "Kazakoff_info_vstu",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
